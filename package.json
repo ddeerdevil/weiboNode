@@ -9,6 +9,7 @@
     "test": ""
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "debug": "^4.1.1",
     "ejs": "~2.3.3",
     "koa": "^2.7.0",
@@ -19,7 +20,8 @@
     "koa-onerror": "^4.1.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "koa-views": "^6.2.0"
+    "koa-views": "^6.2.0",
+    "qs": "^6.9.4"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
