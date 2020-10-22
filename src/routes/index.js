@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2020-10-18 09:59:45
  * @LastEditors: sueRimn
- * @LastEditTime: 2020-10-21 20:56:00
+ * @LastEditTime: 2020-10-22 21:17:23
  */
 const router = require('koa-router')()
 
@@ -30,8 +30,14 @@ router.get('/', async (ctx, next) => {
 })
 
 router.get('/json', async (ctx, next) => {
+  const session = ctx.session
+  if (session.viewNum == null) {
+    session.viewNum = 0
+  }
+  session.viewNum++
   ctx.body = {
-    title: 'koa2 json'
+    title: 'koa2 json',
+    viewNum: session.viewNum
   }
 })
 
