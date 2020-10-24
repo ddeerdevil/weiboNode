@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2020-10-18 09:59:45
  * @LastEditors: sueRimn
- * @LastEditTime: 2020-10-24 08:40:27
+ * @LastEditTime: 2020-10-24 09:03:58
  */
 const router = require('koa-router')()
 
@@ -37,6 +37,7 @@ router.get('/json', async (ctx, next) => {
 
 router.get('/profile/:userName', async (ctx, next) => {
   const { userName } = ctx.params
+  console.lo('object');
   ctx.body = {
     title: 'this is profile page',
     userName
