@@ -37,8 +37,5 @@
     "nodemon": "^1.19.1",
     "pre-commit": "^1.2.2",
     "supertest": "^5.0.0"
-  },
-  "pre-commit": [
-    "lint"
-  ]
+  }
 }
