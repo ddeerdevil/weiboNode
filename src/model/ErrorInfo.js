@@ -17,6 +17,10 @@ module.exports = {
         errno: 10003,
         message: '用户名未存在'
     },
+    loginFailInfo: {
+        errno: 10004,
+        message: '登陆失败'
+    },
     jsonSchemaFailInfo: {
         errno: 10009,
         message: '数据格式校验错误'

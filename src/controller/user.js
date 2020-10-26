@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2020-10-25 08:31:40
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2020-10-26 20:52:32
+ */
 /**
  * @description user controller
  * @author dc 酱
@@ -7,7 +15,8 @@ const { getUserInfo, createUser } = require('../services/user')
 const { SuccessModel, ErrorModel } = require('../model/ResModel');
 const {
     registerUserNameNotExistInfo,
-    registerUserNameExistInfo
+    registerUserNameExistInfo,
+    loginFailInfo
 } = require('../model/ErrorInfo')
 const doCrypto = require('../utils/cryp')
 
@@ -45,7 +54,21 @@ async function register({ userName, password, gender }) {
     }
 }
 
+async function login(ctx, userName, password) {
+    // ctx.session.userInfo = xxx
+
+    const userInfo = await getUserInfo(userName, doCrypto(password));
+    if (!userInfo) {
+        return new ErrorModel(loginFailInfo)
+    }
+    if (ctx.session.userInfo == null) {
+        ctx.session.userInfo = userInfo;
+    }
+    return new SuccessModel()
+}
+
 module.exports = {
     isExist,
-    register
+    register,
+    login
 }
