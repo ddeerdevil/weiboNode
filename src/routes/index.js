@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2020-10-18 09:59:45
  * @LastEditors: sueRimn
- * @LastEditTime: 2020-10-26 21:15:21
+ * @LastEditTime: 2020-10-26 21:18:20
  */
 const router = require('koa-router')()
 const { loginRedirect, loginCheck } = require('../middlewares/loginChecks');
@@ -30,7 +30,7 @@ router.get('/', loginRedirect , async (ctx, next) => {
   })
 })
 
-router.get('/json', loginCheck, async (ctx, next) => {
+router.get('/json', async (ctx, next) => {
   ctx.body = {
     title: 'koa2 json',
   }

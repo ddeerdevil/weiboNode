@@ -4,10 +4,12 @@
  */
 
 const router = require('koa-router')();
-const { isExist, register, login } = require('../../controller/user')
+const { isExist, register, login, deleteCurrentUser } = require('../../controller/user')
 const userValidate = require('../../validator/user')
 const genValidator = require('../../middlewares/validator');
 const user = require('../../services/user');
+const { isTest } = require("../../utils/env");
+const { loginRedirect } = require('../../middlewares/loginChecks');
 router.prefix('/api/user');
 
 // 注册路由
@@ -33,4 +35,12 @@ router.post('/login', async (ctx, next) => {
     // controller
     ctx.body = await login(ctx, userName, password);
 })
+
+router.post('/delete', loginRedirect, async (ctx, next) => {
+    if (isTest) {
+        const { userName } = ctx.session.userInfo;
+        ctx.body = await deleteCurrentUser(userName);
+    }
+})
+
 module.exports = router;
