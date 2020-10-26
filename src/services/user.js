@@ -3,6 +3,7 @@
  * @author dc酱
  */
 
+const user = require('../controller/user');
 const { User } = require('../db/model/index');
 const { formatUser } = require('./_format')
 /**
@@ -33,6 +34,17 @@ async function getUserInfo(userName, password) {
     return formatRes;
 }
 
+async function createUser({ userName, password, gender = 3, nickName }) {
+    const result = User.create({
+        userName,
+        password,
+        nickName: nickName ? nickName : userName,
+        gender
+    })
+    return result.dataValues;
+}
+
 module.exports = {
-    getUserInfo
+    getUserInfo,
+    createUser
 }
