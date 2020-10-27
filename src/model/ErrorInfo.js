@@ -25,6 +25,14 @@ module.exports = {
         errno: 10005,
         message: '您尚未登录'
     },
+    uploadFileSizeFailInfo: {
+        errno: 10007,
+        message: '上传文件过大'
+    },
+    changeInfoFailInfo: {
+        errno: 10008,
+        message: '修改基本信息失败'
+    },
     jsonSchemaFailInfo: {
         errno: 10009,
         message: '数据格式校验错误'
@@ -32,9 +40,5 @@ module.exports = {
     deleteUserFailInfo: {
         errno: 10010,
         message: '删除用户失败'
-    },
-    uploadFileSizeFailInfo: {
-        errno: 10007,
-        message: '上传文件过大'
     }
 }
